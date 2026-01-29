@@ -1,10 +1,14 @@
 from fastapi import FastAPI
-from models import TextRequest
 from fastapi.middleware.cors import CORSMiddleware
+
 try:
-    from backend import models, ai_service, database
+    # Render (Üretim) ortamı için
+    from backend.models import TextRequest
+    from backend.ai_service import AIService
 except ImportError:
-    import models, ai_service, database
+    # Yerel geliştirme ortamı için
+    from models import TextRequest
+    from ai_service import AIService
 
 app = FastAPI()
 
@@ -21,5 +25,6 @@ app.add_middleware(
 async def analyze(data: dict):
     # Analiz kodlarınız...
     return {"result": "Başarılı"}
+
 
 
