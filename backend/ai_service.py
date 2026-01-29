@@ -1,9 +1,16 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 import google.generativeai as genai
-from groq import Groq
 
-load_dotenv()
+try:
+    from groq import Groq
+except ImportError:
+    Groq = None
+
+# .env proje kökünde (backend'in bir üst klasörü)
+_env_path = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(_env_path)
 
 # --- Google Gemini Ayarları ---
 def analyze_with_gemini(text):
@@ -25,9 +32,11 @@ def analyze_with_gemini(text):
 
 # --- Groq Cloud Ayarları ---
 def analyze_with_groq(text):
+    if Groq is None:
+        return {"error": "Groq paketi yüklü değil. pip install groq", "api_configured": False}
     api_key = os.getenv("GROQ_API_KEY")
     if not api_key:
-        return {"error": "Groq API Key bulunamadı!", "api_configured": False}
+        return {"error": "Groq API Key bulunamadı! .env içinde GROQ_API_KEY tanımlayın.", "api_configured": False}
     
     try:
         client = Groq(api_key=api_key)
@@ -44,24 +53,8 @@ def analyze_with_groq(text):
         return {"error": str(e), "api_configured": False}
 
 
-SYSTEM_PROMPT = """
-Sen bir eğitim platformunda çalışan yapay zeka asistanısın.
-Görevin, öğrenci geri bildirimlerini analiz etmek.
-Analiz sonucunda:
-- Kısa özet
-- Duygu durumu
-- Eğitmen için öneri
-üret.
-"""
-
-def analyze_text_with_llm(text: str):
-    response = client.chat.completions.create(
-        model="gpt-4.1-mini",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": text}
-        ]
-    )
-    return response.choices[0].message.content
-
-
+def analyze_text_with_llm(text: str, provider: str = "gemini"):
+    """provider: 'gemini' veya 'groq'"""
+    if provider and provider.lower() == "groq":
+        return analyze_with_groq(text)
+    return analyze_with_gemini(text)
