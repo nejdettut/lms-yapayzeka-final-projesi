@@ -12,7 +12,7 @@ is_remote = "STREAMLIT_RUNTIME_ENV" in os.environ
 
 if is_remote:
     # BURAYA: FastAPI'yi Render/Railway'e yükleyince aldığın URL'yi yazacaksın
-    API_URL = "https://backend-servisin.onrender.com/analyze-text"
+    API_URL = "https://lms-yapayzeka-final-projesi.onrender.com/analyze-text"
 else:
     # Kendi bilgisayarında çalışırken kullanılacak adres
     API_URL = "http://127.0.0.1:8000/analyze-text"
