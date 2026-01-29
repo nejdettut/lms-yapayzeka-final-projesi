@@ -8,6 +8,14 @@ try:
 except ImportError:
     Groq = None
 
+
+try:
+    from backend import models, ai_service, database
+except ImportError:
+    import models, ai_service, database
+
+
+
 # .env proje kökünde (backend'in bir üst klasörü)
 _env_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(_env_path)
@@ -58,3 +66,4 @@ def analyze_text_with_llm(text: str, provider: str = "gemini"):
     if provider and provider.lower() == "groq":
         return analyze_with_groq(text)
     return analyze_with_gemini(text)
+
