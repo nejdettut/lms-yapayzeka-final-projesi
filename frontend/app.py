@@ -9,11 +9,7 @@ st.write("Öğrenci geri bildirimlerini yapay zeka ile analiz edin.")
 # --- API ADRESİ YAPILANDIRMASI ---
 is_remote = "STREAMLIT_RUNTIME_ENV" in os.environ
 
-if is_remote:
-    # Render linkin artık sabit ve doğru
-    API_URL = "https://lms-yapayzeka-final-projesi.onrender.com/analyze-text"
-else:
-    API_URL = "http://127.0.0.1:8000/analyze-text"
+API_URL = "https://lms-yapayzeka-final-projesi.onrender.com/analyze-text"
 
 # --- ARAYÜZ ---
 feedback_text = st.text_area(
