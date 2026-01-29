@@ -1,1 +1,15 @@
+# Backend - API Framework
+fastapi
+uvicorn
 
+# Frontend - User Interface
+streamlit
+requests
+
+# AI Models & Services
+google-generativeai
+groq
+
+# Environment & Utilities
+python-dotenv
+pydantic
