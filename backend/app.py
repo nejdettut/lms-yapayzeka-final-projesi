@@ -1,7 +1,10 @@
 from fastapi import FastAPI
-from ai_service import analyze_text_with_llm
 from models import TextRequest
 from fastapi.middleware.cors import CORSMiddleware
+try:
+    from backend import ai_service
+except ImportError:
+    import ai_service
 
 app = FastAPI()
 
@@ -18,3 +21,4 @@ app.add_middleware(
 async def analyze(data: dict):
     # Analiz kodlarınız...
     return {"result": "Başarılı"}
+
