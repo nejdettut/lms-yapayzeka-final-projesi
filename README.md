@@ -1,9 +1,3 @@
-Harika bir fikir! Projenin "kod" aşamasından çıkıp gerçek bir "ürün" ve "portföy parçası" haline gelmesi için profesyonel bir **README.md** dosyası şart. Bu dosya, senin GitHub profilini ziyaret eden bir işe alım uzmanının veya yöneticinin projeni saniyeler içinde anlamasını sağlar.
-
-İşte projenin kök dizinine eklemen gereken en ayrıntılı ve şık **README.md** içeriği:
-
----
-
 # 🎓 AI Destekli LMS - Geri Bildirim Analiz Sistemi
 
 Bu proje, Eğitim Yönetim Sistemleri (LMS) için geliştirilmiş, öğrenci geri bildirimlerini **Doğal Dil İşleme (NLP)** teknikleriyle analiz eden uçtan uca bir yapay zeka ürünüdür. Eğitmenlerin ders kalitesini artırmalarına yardımcı olmak için duygu analizi ve aksiyon önerileri sunar.
@@ -81,4 +75,5 @@ Bu projede API anahtarları asla kod içerisine gömülmemiştir. Yerel ortamda 
 **Geliştiren:** Nejdet TUT
 **İletişim:** nejdetttut@gmail.com  & github.com/nejdettut
               
+
 
