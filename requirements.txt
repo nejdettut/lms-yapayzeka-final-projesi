@@ -1,0 +1,13 @@
+# Web Arayüzü
+streamlit
+
+# Yapay Zeka SDK'ları
+google-generativeai
+groq
+
+# Veri Doğrulama ve Güvenlik
+pydantic
+python-dotenv
+
+# API İletişimi (Eğer ileride harici API kullanırsan)
+requests
